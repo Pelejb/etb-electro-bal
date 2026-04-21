@@ -8,170 +8,282 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            theme: { extend: { colors: { primary: '#1e3a5f', secondary: '#f59e0b', dark: '#0f172a' } } }
+            theme: { extend: { colors: { volt: '#00e5ff', spark: '#f5a623', deep: '#0a0e1a', panel: '#111827', surface: '#1a2035' } } }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Inter', sans-serif; } .hero-gradient { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); }</style>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; background: #0a0e1a; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .grid-bg { background-image: linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+        .glow-text { text-shadow: 0 0 20px rgba(0,229,255,0.5); }
+        .electric-line { height: 2px; background: linear-gradient(90deg, transparent, #00e5ff, transparent); }
+        .spark-border { background: linear-gradient(90deg, #00e5ff, #f5a623, #00e5ff, #f5a623); background-size: 200% 100%; animation: border-flow 4s linear infinite; padding: 2px; }
+        @keyframes border-flow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+        .nav-glass { background: rgba(10, 14, 26, 0.8); backdrop-filter: blur(20px); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .timeline-line { background: linear-gradient(180deg, #00e5ff, #f5a623, transparent); }
+    </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="text-gray-300 grid-bg">
 
     <!-- Navigation -->
-    <nav class="bg-primary sticky top-0 z-50 shadow-lg">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <nav class="nav-glass sticky top-0 z-50 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3">
-                <div class="bg-secondary text-primary font-extrabold text-xl w-10 h-10 rounded flex items-center justify-center">E</div>
-                <div>
-                    <span class="text-white font-bold text-lg leading-tight block">E.T.B. Electro-bal</span>
-                    <span class="text-blue-200 text-xs">Elektrotechnisch Bureau</span>
+                <div class="spark-border rounded-lg"><div class="bg-deep px-2.5 py-1.5 rounded-md"><span class="mono text-volt font-bold text-lg">E.B</span></div></div>
+                <div class="hidden sm:block">
+                    <span class="text-white font-bold leading-tight block">Electro-bal</span>
+                    <span class="text-volt/60 text-xs mono">ELEKTROTECHNISCH BUREAU</span>
                 </div>
             </a>
-            <div class="hidden md:flex items-center gap-6">
-                <a href="index.html" class="text-blue-100 hover:text-secondary transition text-sm">Home</a>
-                <a href="diensten.html" class="text-blue-100 hover:text-secondary transition text-sm">Diensten</a>
-                <a href="over-ons.html" class="text-secondary font-semibold text-sm">Over Ons</a>
-                <a href="contact.html" class="text-blue-100 hover:text-secondary transition text-sm">Contact</a>
-                <a href="tel:0624897953" class="bg-secondary text-primary font-bold text-sm px-4 py-2 rounded-lg hover:bg-yellow-400 transition">Bel Direct</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-gray-400 hover:text-volt transition text-sm">Home</a>
+                <a href="diensten.html" class="text-gray-400 hover:text-volt transition text-sm">Diensten</a>
+                <a href="over-ons.html" class="text-volt text-sm font-medium">Over Ons</a>
+                <a href="contact.html" class="text-gray-400 hover:text-volt transition text-sm">Contact</a>
+                <a href="tel:0624897953" class="bg-volt/10 text-volt border border-volt/30 font-medium text-sm px-5 py-2 rounded-lg hover:bg-volt/20 transition">06-24897953</a>
             </div>
-            <button id="menu-toggle" class="md:hidden text-white" aria-label="Menu openen">
+            <button id="menu-toggle" class="md:hidden text-volt" aria-label="Menu openen">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-primary border-t border-blue-800 px-4 pb-4">
-            <a href="index.html" class="block py-2 text-blue-100">Home</a>
-            <a href="diensten.html" class="block py-2 text-blue-100">Diensten</a>
-            <a href="over-ons.html" class="block py-2 text-secondary font-semibold">Over Ons</a>
-            <a href="contact.html" class="block py-2 text-blue-100">Contact</a>
-            <a href="tel:0624897953" class="block mt-2 bg-secondary text-primary font-bold text-center py-2 rounded-lg">Bel 06-24897953</a>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 px-6 pb-4">
+            <a href="index.html" class="block py-3 text-gray-400">Home</a>
+            <a href="diensten.html" class="block py-3 text-gray-400">Diensten</a>
+            <a href="over-ons.html" class="block py-3 text-volt font-medium">Over Ons</a>
+            <a href="contact.html" class="block py-3 text-gray-400">Contact</a>
+            <a href="tel:0624897953" class="block mt-2 bg-volt/10 text-volt border border-volt/30 font-bold text-center py-3 rounded-lg">Bel 06-24897953</a>
         </div>
     </nav>
 
     <!-- Page Header -->
-    <header class="hero-gradient text-white py-16">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Over Ons</h1>
-            <p class="text-blue-200 text-lg max-w-2xl mx-auto">Maak kennis met E.T.B. Electro-bal — uw persoonlijke elektricien in Amsterdam.</p>
+    <header class="py-20 relative overflow-hidden">
+        <div class="absolute bottom-0 -left-40 w-96 h-96 bg-spark/5 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mono text-volt/80 text-sm mb-4 flex items-center gap-3">
+                <span class="w-8 h-px bg-volt/60"></span> OVER ONS
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+                Het verhaal<br>achter <span class="text-volt glow-text">de stroom</span>
+            </h1>
+            <p class="text-gray-400 text-lg max-w-xl">Maak kennis met E.T.B. Electro-bal — persoonlijk, vakkundig en altijd bereikbaar.</p>
         </div>
     </header>
 
-    <!-- About Content -->
-    <section class="py-20">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="mb-16">
-                <h2 class="text-3xl font-extrabold text-primary mb-6">Wie zijn wij?</h2>
-                <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                    E.T.B. Electro-bal is een elektrotechnisch bureau gevestigd in Amsterdam Osdorp. Sinds 2013 verzorgen wij elektrotechnische installaties, storingen en onderhoud voor particulieren en bedrijven in Amsterdam en omgeving.
-                </p>
-                <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                    Als eenmanszaak bieden wij u het voordeel van persoonlijke service. U heeft altijd direct contact met de vakman die het werk uitvoert. Geen tussenpersonen, geen callcenters — gewoon eerlijk en vakkundig werk.
-                </p>
-                <p class="text-gray-600 text-lg leading-relaxed">
-                    Wij zijn trots lid van <strong>Techniek Nederland</strong>, de brancheorganisatie voor installatiebedrijven. Dit betekent dat wij werken volgens de hoogste kwaliteitsnormen en altijd op de hoogte zijn van de nieuwste ontwikkelingen in ons vakgebied.
-                </p>
-            </div>
+    <div class="electric-line w-full"></div>
 
-            <!-- Values -->
-            <div class="mb-16">
-                <h2 class="text-3xl font-extrabold text-primary mb-8">Onze Waarden</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="flex gap-4">
-                        <div class="bg-secondary text-primary w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-primary mb-2">Veiligheid</h3>
-                            <p class="text-gray-500">Veiligheid staat bij ons altijd voorop. Alle werkzaamheden worden uitgevoerd conform de geldende NEN-normen en voorschriften.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="bg-blue-50 text-primary w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-primary mb-2">Persoonlijk</h3>
-                            <p class="text-gray-500">Direct contact met uw elektricien. Wij nemen de tijd om naar uw wensen te luisteren en denken graag met u mee.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="bg-blue-50 text-primary w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-primary mb-2">Transparant</h3>
-                            <p class="text-gray-500">Eerlijke prijzen, geen verborgen kosten. U ontvangt vooraf een duidelijke offerte zodat u precies weet waar u aan toe bent.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="bg-secondary text-primary w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-primary mb-2">Vakmanschap</h3>
-                            <p class="text-gray-500">Met meer dan 10 jaar ervaring en lid van Techniek Nederland staat kwaliteit bij ons centraal.</p>
+    <!-- Story Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12 items-start">
+                <!-- Left: Big quote / statement -->
+                <div class="md:col-span-5 reveal">
+                    <div class="bg-surface rounded-2xl p-8 md:p-10 border border-white/5 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-volt via-spark to-transparent"></div>
+                        <div class="pl-6">
+                            <span class="text-6xl text-volt/20 font-bold leading-none">"</span>
+                            <p class="text-white text-xl md:text-2xl font-medium leading-relaxed -mt-4">
+                                Elektra is vertrouwen. U vertrouwt erop dat het licht aangaat, dat uw installatie veilig is. Dat vertrouwen nemen wij serieus.
+                            </p>
+                            <div class="mt-6 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-volt/10 border border-volt/30 flex items-center justify-center">
+                                    <span class="mono text-volt text-sm font-bold">EB</span>
+                                </div>
+                                <div>
+                                    <p class="text-white text-sm font-medium">E.T.B. Electro-bal</p>
+                                    <p class="text-gray-500 text-xs">Oprichter</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Right: Story text -->
+                <div class="md:col-span-7 reveal" style="transition-delay: 0.15s">
+                    <h2 class="text-3xl font-bold text-white mb-6">Wie zijn wij?</h2>
+                    <div class="space-y-5 text-gray-400 leading-relaxed">
+                        <p>
+                            E.T.B. Electro-bal is een elektrotechnisch bureau gevestigd in <strong class="text-gray-200">Amsterdam Osdorp</strong>. Sinds 2013 verzorgen wij elektrotechnische installaties, storingen en onderhoud voor particulieren en bedrijven in Amsterdam en omgeving.
+                        </p>
+                        <p>
+                            Als eenmanszaak bieden wij u het voordeel van <strong class="text-gray-200">persoonlijke service</strong>. U heeft altijd direct contact met de vakman die het werk uitvoert. Geen tussenpersonen, geen callcenters — gewoon eerlijk en vakkundig werk.
+                        </p>
+                        <p>
+                            Wij zijn trots lid van <strong class="text-volt">Techniek Nederland</strong>, de brancheorganisatie voor installatiebedrijven. Dit betekent dat wij werken volgens de hoogste kwaliteitsnormen en altijd op de hoogte zijn van de nieuwste ontwikkelingen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <div class="mono text-volt/80 text-sm mb-3">ONS TRAJECT</div>
+                <h2 class="text-4xl font-bold text-white">De tijdlijn</h2>
             </div>
 
-            <!-- Certifications -->
-            <div class="bg-gray-50 rounded-2xl p-8 md:p-12">
-                <h2 class="text-2xl font-extrabold text-primary mb-6">Certificeringen & Lidmaatschappen</h2>
-                <div class="grid sm:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-primary mb-2">Techniek Nederland</h3>
-                        <p class="text-gray-500 text-sm">Erkend lid van de brancheorganisatie voor installatiebedrijven en technische dienstverleners.</p>
+            <div class="relative">
+                <!-- Vertical line -->
+                <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px timeline-line"></div>
+
+                <!-- 2013 -->
+                <div class="relative flex flex-col md:flex-row md:items-center mb-12 reveal">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                        <span class="mono text-spark font-bold text-lg">2013</span>
+                        <h3 class="text-white font-bold text-xl mt-1">Oprichting</h3>
+                        <p class="text-gray-500 text-sm mt-2">E.T.B. Electro-bal wordt opgericht en ingeschreven bij de KvK. Het begin van vakkundig elektrawerk in Amsterdam.</p>
                     </div>
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-primary mb-2">KvK Geregistreerd</h3>
-                        <p class="text-gray-500 text-sm">Ingeschreven bij de Kamer van Koophandel onder nummer 34245246.</p>
+                    <div class="absolute left-6 md:left-1/2 w-3 h-3 bg-spark rounded-full -translate-x-1/2 ring-4 ring-deep"></div>
+                    <div class="md:w-1/2 md:pl-12"></div>
+                </div>
+
+                <!-- Techniek NL -->
+                <div class="relative flex flex-col md:flex-row md:items-center mb-12 reveal">
+                    <div class="md:w-1/2 md:pr-12"></div>
+                    <div class="absolute left-6 md:left-1/2 w-3 h-3 bg-volt rounded-full -translate-x-1/2 ring-4 ring-deep"></div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <span class="mono text-volt font-bold text-lg">Erkend</span>
+                        <h3 class="text-white font-bold text-xl mt-1">Lid Techniek Nederland</h3>
+                        <p class="text-gray-500 text-sm mt-2">Aangesloten bij de brancheorganisatie. Garantie voor kwaliteit en vakmanschap.</p>
                     </div>
+                </div>
+
+                <!-- Today -->
+                <div class="relative flex flex-col md:flex-row md:items-center reveal">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                        <span class="mono text-spark font-bold text-lg">Nu</span>
+                        <h3 class="text-white font-bold text-xl mt-1">10+ jaar ervaring</h3>
+                        <p class="text-gray-500 text-sm mt-2">Meer dan een decennium ervaring in elektrotechnische installaties voor Amsterdam en omgeving.</p>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 w-3 h-3 bg-spark rounded-full -translate-x-1/2 ring-4 ring-deep"></div>
+                    <div class="md:w-1/2 md:pl-12"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="py-20 relative">
+        <div class="absolute inset-0 bg-surface/50"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <div class="mono text-volt/80 text-sm mb-3">ONZE WAARDEN</div>
+                <h2 class="text-4xl font-bold text-white">Waar wij voor staan</h2>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-deep border border-white/5 rounded-2xl p-8 text-center reveal group hover:border-volt/30 transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-volt/10 border border-volt/20 flex items-center justify-center mx-auto mb-5">
+                        <svg class="w-8 h-8 text-volt" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Veiligheid</h3>
+                    <p class="text-gray-500 text-sm">Alle werkzaamheden conform NEN-normen en voorschriften.</p>
+                </div>
+
+                <div class="bg-deep border border-white/5 rounded-2xl p-8 text-center reveal group hover:border-spark/30 transition-all" style="transition-delay:0.1s">
+                    <div class="w-16 h-16 rounded-2xl bg-spark/10 border border-spark/20 flex items-center justify-center mx-auto mb-5">
+                        <svg class="w-8 h-8 text-spark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Persoonlijk</h3>
+                    <p class="text-gray-500 text-sm">Direct contact met uw elektricien. Wij luisteren en denken mee.</p>
+                </div>
+
+                <div class="bg-deep border border-white/5 rounded-2xl p-8 text-center reveal group hover:border-volt/30 transition-all" style="transition-delay:0.2s">
+                    <div class="w-16 h-16 rounded-2xl bg-volt/10 border border-volt/20 flex items-center justify-center mx-auto mb-5">
+                        <svg class="w-8 h-8 text-volt" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Transparant</h3>
+                    <p class="text-gray-500 text-sm">Eerlijke prijzen. Geen verborgen kosten, altijd vooraf duidelijk.</p>
+                </div>
+
+                <div class="bg-deep border border-white/5 rounded-2xl p-8 text-center reveal group hover:border-spark/30 transition-all" style="transition-delay:0.3s">
+                    <div class="w-16 h-16 rounded-2xl bg-spark/10 border border-spark/20 flex items-center justify-center mx-auto mb-5">
+                        <svg class="w-8 h-8 text-spark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Vakmanschap</h3>
+                    <p class="text-gray-500 text-sm">10+ jaar ervaring. Lid van Techniek Nederland.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="grid sm:grid-cols-2 gap-6 reveal">
+                <div class="bg-surface rounded-2xl p-8 border border-volt/10 hover:border-volt/30 transition">
+                    <div class="mono text-volt text-xs mb-3 uppercase">Brancheorganisatie</div>
+                    <h3 class="text-white font-bold text-xl mb-3">Techniek Nederland</h3>
+                    <p class="text-gray-500 text-sm">Erkend lid van de brancheorganisatie voor installatiebedrijven en technische dienstverleners in Nederland.</p>
+                </div>
+                <div class="bg-surface rounded-2xl p-8 border border-spark/10 hover:border-spark/30 transition">
+                    <div class="mono text-spark text-xs mb-3 uppercase">Registratie</div>
+                    <h3 class="text-white font-bold text-xl mb-3">KvK Geregistreerd</h3>
+                    <p class="text-gray-500 text-sm">Ingeschreven bij de Kamer van Koophandel onder nummer 34245246. Hoofdvestiging in Amsterdam.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="hero-gradient py-16">
-        <div class="max-w-3xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-extrabold text-white mb-4">Wilt u samenwerken?</h2>
-            <p class="text-blue-200 text-lg mb-8">Neem vrijblijvend contact met ons op. Wij helpen u graag.</p>
-            <a href="contact.html" class="bg-secondary text-primary font-bold text-lg px-8 py-4 rounded-xl hover:bg-yellow-400 transition inline-block">Neem Contact Op</a>
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-volt/5 to-spark/5"></div>
+        <div class="max-w-3xl mx-auto px-6 relative z-10 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Wilt u <span class="text-volt glow-text">samenwerken?</span></h2>
+            <p class="text-gray-400 text-lg mb-10">Neem vrijblijvend contact met ons op. Wij helpen u graag.</p>
+            <a href="contact.html" class="inline-flex items-center justify-center">
+                <div class="spark-border rounded-xl"><div class="bg-deep px-8 py-4 rounded-[10px]"><span class="text-white font-bold text-lg">Neem Contact Op</span></div></div>
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-gray-400 py-12">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-3">E.T.B. Electro-bal</h4>
-                    <p class="text-sm leading-relaxed">Elektrotechnisch Bureau<br>Ookmeerweg 255-2<br>1069 MT Amsterdam</p>
+    <footer class="border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-10">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="spark-border rounded-lg"><div class="bg-deep px-2.5 py-1.5 rounded-md"><span class="mono text-volt font-bold">E.B</span></div></div>
+                        <span class="text-white font-bold">E.T.B. Electro-bal</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-sm">Elektrotechnisch Bureau in Amsterdam Osdorp. Vakkundige installaties, storingen en onderhoud sinds 2013.</p>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold text-lg mb-3">Contact</h4>
-                    <p class="text-sm">Tel: <a href="tel:0624897953" class="hover:text-secondary transition">06-24897953</a></p>
-                    <p class="text-sm">KvK: 34245246</p>
+                    <h4 class="mono text-volt/60 text-xs mb-4 uppercase">Navigatie</h4>
+                    <div class="flex flex-col gap-2 text-sm">
+                        <a href="index.html" class="text-gray-400 hover:text-volt transition">Home</a>
+                        <a href="diensten.html" class="text-gray-400 hover:text-volt transition">Diensten</a>
+                        <a href="over-ons.html" class="text-gray-400 hover:text-volt transition">Over Ons</a>
+                        <a href="contact.html" class="text-gray-400 hover:text-volt transition">Contact</a>
+                    </div>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold text-lg mb-3">Navigatie</h4>
-                    <div class="flex flex-col gap-1 text-sm">
-                        <a href="index.html" class="hover:text-secondary transition">Home</a>
-                        <a href="diensten.html" class="hover:text-secondary transition">Diensten</a>
-                        <a href="over-ons.html" class="hover:text-secondary transition">Over Ons</a>
-                        <a href="contact.html" class="hover:text-secondary transition">Contact</a>
+                    <h4 class="mono text-volt/60 text-xs mb-4 uppercase">Contact</h4>
+                    <div class="flex flex-col gap-2 text-sm text-gray-400">
+                        <a href="tel:0624897953" class="hover:text-volt transition">06-24897953</a>
+                        <span>Ookmeerweg 255-2</span>
+                        <span>1069 MT Amsterdam</span>
+                        <span>KvK: 34245246</span>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-6 text-center text-sm">
-                <p>&copy; 2025 E.T.B. Electro-bal. Alle rechten voorbehouden.</p>
+            <div class="electric-line w-full mb-6"></div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+                <p>&copy; 2025 E.T.B. Electro-bal</p>
+                <p class="mono">Lid van Techniek Nederland</p>
             </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
+        document.getElementById('menu-toggle').addEventListener('click', function() { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>

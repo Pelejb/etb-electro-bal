@@ -4,149 +4,228 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diensten | E.T.B. Electro-bal — Elektricien Amsterdam</title>
-    <meta name="description" content="Bekijk onze elektrotechnische diensten: installaties, storingen, keuringen, domotica, verlichting en meer. E.T.B. Electro-bal Amsterdam.">
+    <meta name="description" content="Elektrotechnische diensten: installaties, storingen, keuringen, domotica, verlichting en meer. E.T.B. Electro-bal Amsterdam.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            theme: { extend: { colors: { primary: '#1e3a5f', secondary: '#f59e0b', dark: '#0f172a' } } }
+            theme: { extend: { colors: { volt: '#00e5ff', spark: '#f5a623', deep: '#0a0e1a', panel: '#111827', surface: '#1a2035' } } }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Inter', sans-serif; } .hero-gradient { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); }</style>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; background: #0a0e1a; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .grid-bg {
+            background-image: linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .glow-volt { box-shadow: 0 0 30px rgba(0,229,255,0.4); }
+        .glow-text { text-shadow: 0 0 20px rgba(0,229,255,0.5); }
+        .electric-line { height: 2px; background: linear-gradient(90deg, transparent, #00e5ff, transparent); }
+        .card-hover { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(0,229,255,0.1); }
+        .card-hover:hover { border-color: rgba(0,229,255,0.4); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(0,229,255,0.1); }
+        .spark-border { background: linear-gradient(90deg, #00e5ff, #f5a623, #00e5ff, #f5a623); background-size: 200% 100%; animation: border-flow 4s linear infinite; padding: 2px; }
+        @keyframes border-flow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+        .nav-glass { background: rgba(10, 14, 26, 0.8); backdrop-filter: blur(20px); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="text-gray-300 grid-bg">
 
     <!-- Navigation -->
-    <nav class="bg-primary sticky top-0 z-50 shadow-lg">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <nav class="nav-glass sticky top-0 z-50 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3">
-                <div class="bg-secondary text-primary font-extrabold text-xl w-10 h-10 rounded flex items-center justify-center">E</div>
-                <div>
-                    <span class="text-white font-bold text-lg leading-tight block">E.T.B. Electro-bal</span>
-                    <span class="text-blue-200 text-xs">Elektrotechnisch Bureau</span>
+                <div class="spark-border rounded-lg"><div class="bg-deep px-2.5 py-1.5 rounded-md"><span class="mono text-volt font-bold text-lg">E.B</span></div></div>
+                <div class="hidden sm:block">
+                    <span class="text-white font-bold leading-tight block">Electro-bal</span>
+                    <span class="text-volt/60 text-xs mono">ELEKTROTECHNISCH BUREAU</span>
                 </div>
             </a>
-            <div class="hidden md:flex items-center gap-6">
-                <a href="index.html" class="text-blue-100 hover:text-secondary transition text-sm">Home</a>
-                <a href="diensten.html" class="text-secondary font-semibold text-sm">Diensten</a>
-                <a href="over-ons.html" class="text-blue-100 hover:text-secondary transition text-sm">Over Ons</a>
-                <a href="contact.html" class="text-blue-100 hover:text-secondary transition text-sm">Contact</a>
-                <a href="tel:0624897953" class="bg-secondary text-primary font-bold text-sm px-4 py-2 rounded-lg hover:bg-yellow-400 transition">Bel Direct</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-gray-400 hover:text-volt transition text-sm">Home</a>
+                <a href="diensten.html" class="text-volt text-sm font-medium">Diensten</a>
+                <a href="over-ons.html" class="text-gray-400 hover:text-volt transition text-sm">Over Ons</a>
+                <a href="contact.html" class="text-gray-400 hover:text-volt transition text-sm">Contact</a>
+                <a href="tel:0624897953" class="bg-volt/10 text-volt border border-volt/30 font-medium text-sm px-5 py-2 rounded-lg hover:bg-volt/20 transition">06-24897953</a>
             </div>
-            <button id="menu-toggle" class="md:hidden text-white" aria-label="Menu openen">
+            <button id="menu-toggle" class="md:hidden text-volt" aria-label="Menu openen">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-primary border-t border-blue-800 px-4 pb-4">
-            <a href="index.html" class="block py-2 text-blue-100">Home</a>
-            <a href="diensten.html" class="block py-2 text-secondary font-semibold">Diensten</a>
-            <a href="over-ons.html" class="block py-2 text-blue-100">Over Ons</a>
-            <a href="contact.html" class="block py-2 text-blue-100">Contact</a>
-            <a href="tel:0624897953" class="block mt-2 bg-secondary text-primary font-bold text-center py-2 rounded-lg">Bel 06-24897953</a>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 px-6 pb-4">
+            <a href="index.html" class="block py-3 text-gray-400">Home</a>
+            <a href="diensten.html" class="block py-3 text-volt font-medium">Diensten</a>
+            <a href="over-ons.html" class="block py-3 text-gray-400">Over Ons</a>
+            <a href="contact.html" class="block py-3 text-gray-400">Contact</a>
+            <a href="tel:0624897953" class="block mt-2 bg-volt/10 text-volt border border-volt/30 font-bold text-center py-3 rounded-lg">Bel 06-24897953</a>
         </div>
     </nav>
 
     <!-- Page Header -->
-    <header class="hero-gradient text-white py-16">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Onze Diensten</h1>
-            <p class="text-blue-200 text-lg max-w-2xl mx-auto">Van kleine reparaties tot complete installaties — wij bieden een breed scala aan elektrotechnische diensten.</p>
+    <header class="py-20 relative overflow-hidden">
+        <div class="absolute top-10 -right-40 w-96 h-96 bg-volt/5 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mono text-volt/80 text-sm mb-4 flex items-center gap-3">
+                <span class="w-8 h-px bg-volt/60"></span> ONZE DIENSTEN
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+                Wat wij<br><span class="text-volt glow-text">voor u doen</span>
+            </h1>
+            <p class="text-gray-400 text-lg max-w-xl">Van kleine reparaties tot complete installaties — wij bieden een breed scala aan elektrotechnische diensten in Amsterdam en omgeving.</p>
         </div>
     </header>
 
-    <!-- Services Grid -->
-    <section class="py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-8">
+    <div class="electric-line w-full"></div>
 
-                <!-- Service 1 -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg transition">
-                    <div class="bg-blue-50 text-primary w-14 h-14 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+    <!-- Services -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="space-y-6">
+
+                <!-- Service 1 - Full width -->
+                <div class="bg-surface rounded-2xl p-8 md:p-12 card-hover reveal">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-1">
+                            <span class="mono text-4xl font-bold text-volt/20">01</span>
+                        </div>
+                        <div class="md:col-span-7">
+                            <div class="w-12 h-12 rounded-xl bg-volt/10 border border-volt/20 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-volt" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Elektra Installaties</h2>
+                            <p class="text-gray-400 leading-relaxed">Complete elektrische installaties voor nieuwbouw, verbouw en renovatie. Van de groepenkast tot wandcontactdozen, schakelaars en verlichting. Alles conform de nieuwste NEN-normen.</p>
+                        </div>
+                        <div class="md:col-span-4">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">Nieuwbouw installaties</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">Renovatie en uitbreiding</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">Groepenkast vervangen</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">Extra contactdozen & schakelaars</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="text-2xl font-bold text-primary mb-3">Elektra Installaties</h2>
-                    <p class="text-gray-500 leading-relaxed mb-4">Complete elektrische installaties voor nieuwbouw, verbouw en renovatie. Van de groepenkast tot wandcontactdozen, schakelaars en verlichting.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Nieuwbouw installaties</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Renovatie en uitbreiding</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Groepenkast vervangen / uitbreiden</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Extra wandcontactdozen en schakelaars</li>
-                    </ul>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg transition">
-                    <div class="bg-yellow-50 text-secondary w-14 h-14 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="bg-surface rounded-2xl p-8 md:p-12 card-hover reveal">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-1">
+                            <span class="mono text-4xl font-bold text-spark/20">02</span>
+                        </div>
+                        <div class="md:col-span-7">
+                            <div class="w-12 h-12 rounded-xl bg-spark/10 border border-spark/20 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-spark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Storingen & Reparaties</h2>
+                            <p class="text-gray-400 leading-relaxed">Snel ter plaatse bij elektrastoringen. Wij diagnosticeren en verhelpen het probleem vakkundig en veilig. Ook in de avonduren bereikbaar voor spoedsituaties.</p>
+                        </div>
+                        <div class="md:col-span-4">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">Kortsluiting opsporen</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">Stroomuitval verhelpen</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">Defecte bedrading vervangen</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">Aardlekschakelaar problemen</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="text-2xl font-bold text-primary mb-3">Storingen & Reparaties</h2>
-                    <p class="text-gray-500 leading-relaxed mb-4">Snel ter plaatse bij elektrastoringen. Wij diagnosticeren en verhelpen het probleem vakkundig en veilig.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Kortsluiting opsporen</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Stroomuitval verhelpen</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Defecte bedrading vervangen</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Aardlekschakelaar problemen</li>
-                    </ul>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg transition">
-                    <div class="bg-blue-50 text-primary w-14 h-14 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <div class="bg-surface rounded-2xl p-8 md:p-12 card-hover reveal">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-1">
+                            <span class="mono text-4xl font-bold text-volt/20">03</span>
+                        </div>
+                        <div class="md:col-span-7">
+                            <div class="w-12 h-12 rounded-xl bg-volt/10 border border-volt/20 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-volt" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Keuringen & Inspecties</h2>
+                            <p class="text-gray-400 leading-relaxed">Periodieke keuring van uw elektrische installatie conform NEN 1010 en NEN 3140. Essentieel voor de veiligheid van uw woning of bedrijfspand.</p>
+                        </div>
+                        <div class="md:col-span-4">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">NEN 1010 keuring</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">Periodieke inspectie</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">Opleveringskeuring nieuwbouw</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">Rapportage en advies</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="text-2xl font-bold text-primary mb-3">Keuringen & Inspecties</h2>
-                    <p class="text-gray-500 leading-relaxed mb-4">Periodieke keuring van uw elektrische installatie conform NEN 1010 en NEN 3140. Veiligheid voorop.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> NEN 1010 keuring</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Periodieke inspectie</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Opleveringskeuring nieuwbouw</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Rapportage en advies</li>
-                    </ul>
                 </div>
 
                 <!-- Service 4 -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg transition">
-                    <div class="bg-yellow-50 text-secondary w-14 h-14 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                <div class="bg-surface rounded-2xl p-8 md:p-12 card-hover reveal">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-1">
+                            <span class="mono text-4xl font-bold text-spark/20">04</span>
+                        </div>
+                        <div class="md:col-span-7">
+                            <div class="w-12 h-12 rounded-xl bg-spark/10 border border-spark/20 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-spark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Verlichting</h2>
+                            <p class="text-gray-400 leading-relaxed">Advies en installatie van binnen- en buitenverlichting. Van functionele werkverlichting tot sfeervolle LED-oplossingen voor uw woning of tuin.</p>
+                        </div>
+                        <div class="md:col-span-4">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">LED verlichting</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">Buiten- en tuinverlichting</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">Inbouwspots en railsystemen</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">Dimmer installaties</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="text-2xl font-bold text-primary mb-3">Verlichting</h2>
-                    <p class="text-gray-500 leading-relaxed mb-4">Advies en installatie van binnen- en buitenverlichting. Van functioneel tot sfeerverlichting, inclusief LED-oplossingen.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> LED verlichting</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Buitenverlichting en tuinverlichting</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Inbouwspots en railsystemen</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Dimmer installaties</li>
-                    </ul>
                 </div>
 
                 <!-- Service 5 -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg transition">
-                    <div class="bg-blue-50 text-primary w-14 h-14 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4"/></svg>
+                <div class="bg-surface rounded-2xl p-8 md:p-12 card-hover reveal">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-1">
+                            <span class="mono text-4xl font-bold text-volt/20">05</span>
+                        </div>
+                        <div class="md:col-span-7">
+                            <div class="w-12 h-12 rounded-xl bg-volt/10 border border-volt/20 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-volt" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4"/></svg>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Domotica & Smart Home</h2>
+                            <p class="text-gray-400 leading-relaxed">Maak uw woning slim. Bediening van verlichting, verwarming, beveiliging en meer via uw smartphone. Wij adviseren en installeren de juiste oplossing.</p>
+                        </div>
+                        <div class="md:col-span-4">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">Slimme verlichting</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">Slimme thermostaat</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">WiFi & netwerk</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-volt rounded-full"></span><span class="text-gray-300">Beveiligingssystemen</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="text-2xl font-bold text-primary mb-3">Domotica & Smart Home</h2>
-                    <p class="text-gray-500 leading-relaxed mb-4">Maak uw woning slim met domotica. Bediening van verlichting, verwarming en meer via uw telefoon.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Slimme verlichting</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Slimme thermostaat</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Netwerk en WiFi oplossingen</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Beveiligingssystemen</li>
-                    </ul>
                 </div>
 
                 <!-- Service 6 -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg transition">
-                    <div class="bg-yellow-50 text-secondary w-14 h-14 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                <div class="bg-surface rounded-2xl p-8 md:p-12 card-hover reveal">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-1">
+                            <span class="mono text-4xl font-bold text-spark/20">06</span>
+                        </div>
+                        <div class="md:col-span-7">
+                            <div class="w-12 h-12 rounded-xl bg-spark/10 border border-spark/20 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-spark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Zakelijke Installaties</h2>
+                            <p class="text-gray-400 leading-relaxed">Elektrotechnische installaties voor bedrijfspanden, winkels en kantoren. Betrouwbaar, conform alle voorschriften en met minimale overlast.</p>
+                        </div>
+                        <div class="md:col-span-4">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">Kantoor en winkel elektra</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">Noodverlichting</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">Data en netwerk bekabeling</span></div>
+                                <div class="flex items-center gap-3 text-sm"><span class="w-1.5 h-1.5 bg-spark rounded-full"></span><span class="text-gray-300">Periodiek onderhoud</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="text-2xl font-bold text-primary mb-3">Zakelijke Installaties</h2>
-                    <p class="text-gray-500 leading-relaxed mb-4">Elektrotechnische installaties voor bedrijfspanden, winkels en kantoren. Betrouwbaar en conform alle voorschriften.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Kantoor en winkel elektra</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Noodverlichting</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Data en netwerk bekabeling</li>
-                        <li class="flex items-center gap-2"><span class="text-secondary font-bold">&#10003;</span> Periodiek onderhoud</li>
-                    </ul>
                 </div>
 
             </div>
@@ -154,50 +233,62 @@
     </section>
 
     <!-- CTA -->
-    <section class="hero-gradient py-16">
-        <div class="max-w-3xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-extrabold text-white mb-4">Hulp nodig met elektra?</h2>
-            <p class="text-blue-200 text-lg mb-8">Neem contact op voor een vrijblijvende offerte of advies.</p>
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-volt/5 to-spark/5"></div>
+        <div class="max-w-3xl mx-auto px-6 relative z-10 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Hulp nodig met <span class="text-volt glow-text">elektra?</span></h2>
+            <p class="text-gray-400 text-lg mb-10">Neem contact op voor een vrijblijvende offerte of advies.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:0624897953" class="bg-secondary text-primary font-bold text-lg px-8 py-4 rounded-xl hover:bg-yellow-400 transition">Bel 06-24897953</a>
-                <a href="contact.html" class="border-2 border-white text-white font-bold text-lg px-8 py-4 rounded-xl hover:bg-white hover:text-primary transition">Contact Formulier</a>
+                <a href="tel:0624897953" class="group relative inline-flex items-center justify-center">
+                    <div class="spark-border rounded-xl"><div class="bg-deep px-8 py-4 rounded-[10px]"><span class="text-white font-bold text-lg">Bel 06-24897953</span></div></div>
+                </a>
+                <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 bg-volt/10 border border-volt/30 text-volt font-medium rounded-xl hover:bg-volt/20 transition">Stuur een Bericht</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-gray-400 py-12">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-3">E.T.B. Electro-bal</h4>
-                    <p class="text-sm leading-relaxed">Elektrotechnisch Bureau<br>Ookmeerweg 255-2<br>1069 MT Amsterdam</p>
+    <footer class="border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-10">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="spark-border rounded-lg"><div class="bg-deep px-2.5 py-1.5 rounded-md"><span class="mono text-volt font-bold">E.B</span></div></div>
+                        <span class="text-white font-bold">E.T.B. Electro-bal</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-sm">Elektrotechnisch Bureau in Amsterdam Osdorp. Vakkundige installaties, storingen en onderhoud sinds 2013.</p>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold text-lg mb-3">Contact</h4>
-                    <p class="text-sm">Tel: <a href="tel:0624897953" class="hover:text-secondary transition">06-24897953</a></p>
-                    <p class="text-sm">KvK: 34245246</p>
+                    <h4 class="mono text-volt/60 text-xs mb-4 uppercase">Navigatie</h4>
+                    <div class="flex flex-col gap-2 text-sm">
+                        <a href="index.html" class="text-gray-400 hover:text-volt transition">Home</a>
+                        <a href="diensten.html" class="text-gray-400 hover:text-volt transition">Diensten</a>
+                        <a href="over-ons.html" class="text-gray-400 hover:text-volt transition">Over Ons</a>
+                        <a href="contact.html" class="text-gray-400 hover:text-volt transition">Contact</a>
+                    </div>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold text-lg mb-3">Navigatie</h4>
-                    <div class="flex flex-col gap-1 text-sm">
-                        <a href="index.html" class="hover:text-secondary transition">Home</a>
-                        <a href="diensten.html" class="hover:text-secondary transition">Diensten</a>
-                        <a href="over-ons.html" class="hover:text-secondary transition">Over Ons</a>
-                        <a href="contact.html" class="hover:text-secondary transition">Contact</a>
+                    <h4 class="mono text-volt/60 text-xs mb-4 uppercase">Contact</h4>
+                    <div class="flex flex-col gap-2 text-sm text-gray-400">
+                        <a href="tel:0624897953" class="hover:text-volt transition">06-24897953</a>
+                        <span>Ookmeerweg 255-2</span>
+                        <span>1069 MT Amsterdam</span>
+                        <span>KvK: 34245246</span>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-6 text-center text-sm">
-                <p>&copy; 2025 E.T.B. Electro-bal. Alle rechten voorbehouden.</p>
+            <div class="electric-line w-full mb-6"></div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+                <p>&copy; 2025 E.T.B. Electro-bal</p>
+                <p class="mono">Lid van Techniek Nederland</p>
             </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
+        document.getElementById('menu-toggle').addEventListener('click', function() { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
